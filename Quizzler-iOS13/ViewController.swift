@@ -44,10 +44,9 @@ class ViewController: UIViewController {
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer{
-            print("Right!!")
-            
+            sender.backgroundColor = UIColor.green
         } else{
-            print("Wrong!!")
+            sender.backgroundColor = UIColor.red
         }
         
         // Check if the user reaches till the end of the quiz
@@ -58,12 +57,16 @@ class ViewController: UIViewController {
             questionNumber = 0
         }
         
-        updateUI()
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+        //repeats is not needed here and also we don't have to put it in the variable due to the same reason
+        
         
     }
     
-    func updateUI(){
+    @objc func updateUI(){
         questionLabel.text = quiz[questionNumber].text
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
     }
     
 }
