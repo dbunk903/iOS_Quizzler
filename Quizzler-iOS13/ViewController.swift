@@ -41,8 +41,11 @@ class ViewController: UIViewController {
             print("Wrong!!")
         }
         
-      
-      
+        // Check if the user reaches till the end of the quiz
+        questionNumber += 1
+        if questionNumber == quiz.count{
+            questionNumber =  0
+        }
         updateUI()
         
     }
